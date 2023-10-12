@@ -3,37 +3,29 @@
 struct node
       {
 	 int data;
-	 // creating a node(struct) pointer to point next element of linked list;
 	 struct node *next;
       };
-//creating pointer head of type node(struct) to save the starting address of the linked list .since starting there are no elements in linked list its assigned with NULL
 struct node *head=NULL;
-//function to insert
 struct node dummy;
 void ins_strt()
-     {  int data;
-	struct node *ptr,*temp;
+     {  int input;
+	struct node *temp;
 	printf("\nEnter the value to input: ");
-	scanf("%d",&data);
-	//creating a node and saving its address in temp
+	scanf("%d",&input);
 	temp=(struct node*)malloc(sizeof(dummy));
-	//setting the data element in temp user input
-	temp->data=data;
-	//setting next pointer in temp with head adress of current linkedlist .To make temp as first element
+	temp->data=input;
 	temp->next=head;
-	//now temp has the adress of first element in current linkedlist.so we asign that adress to head
 	head=temp;
      }
 void ins_end()
      {
-	int data;
+	int input;
 	struct node *ptr,*temp;
 	printf("\nenter the value to input : ");
-	scanf("%d",&data);
+	scanf("%d",&input);
 	 temp=(struct node*)malloc(sizeof(dummy));
-	  temp->data=data;
+	  temp->data=input;
 	  temp->next=NULL;
-	  //if the linkedlist is empty .then temp has the adress of the first element so we asign the adress to head
 	if(head==NULL)
 	  {
 	    head=temp;
@@ -41,12 +33,10 @@ void ins_end()
 	else
 	  {
 	    ptr=head;
-	    //to find the last element in linked list we go trough the linked list until we find the pointer with null which indicate the last element
 	    while(ptr->next!=NULL)
 		{
 		    ptr=ptr->next;
 		}
-	    //then we asign the adress of new now(temp) to the pointer of last not which means the new node is connected to last node
 	    ptr->next=temp;
 	  }
      }
@@ -80,9 +70,9 @@ void ins_pos()
 		 temp->next=swap;
 	       }
 	     else
-	       {
+	       
 		 printf("invalid position");
-	       }
+	       
 	  }
      }
 void display()
@@ -101,12 +91,31 @@ void display()
 	    printf("Element at %d is %d \n",i,ptr->data);
 	  }
 	else
-	   {
 	     printf("\nLinked list is empty\n");
-	   }
-
-
      }
+void search()
+	{
+	  int data,i;
+	  struct node *ptr;
+	  ptr=head;
+	  if(head!=NULL)
+	  {
+	  printf("Enter the element to be searched:\n");
+	  scanf("%d",&data);
+	  for(i=1;ptr->next!=NULL;i++)
+	  	{
+	  	   if(ptr->data==data)
+	  		  printf("\nData found at position: %d \n",i);
+	  	    ptr=ptr->next;
+	  	}
+	  if(ptr->data==data)
+	  		  printf("\nData found at position %d \n",i);
+	  else
+	  printf("The value to be searched is not present in the program!!!");	
+	  }	
+	  else
+	  printf("The list is empty!!!");
+	}	
 void dlt_end()
     {
 		struct node *dlt,*pre;
@@ -115,10 +124,9 @@ void dlt_end()
 		int i=0;
 		if(dlt!=NULL)
 			{
-
 			   while(dlt->next!=NULL)
 			       {
-				    pre=dlt;
+				 pre=dlt;
 			     	dlt=dlt->next;
 					i=i+1;
 			       }
@@ -130,6 +138,7 @@ void dlt_end()
 				else
 				  {
 			        pre->next=NULL;
+			        free(dlt);
 				  }
 			}
 		else 
@@ -150,8 +159,6 @@ void dlt_pos()
 				pre=dlt;
 				dlt=dlt->next;
 				printf("\n %d   %d",1,dlt->data);
-
-
 			  }
 			  if(i==pos && dlt==head)
 			    {
@@ -159,7 +166,6 @@ void dlt_pos()
 					printf("Head is changed");
 					printf("\nDeleting element from position %d and value is %d",i,dlt->data);
 					free(dlt);
-
 				}
 			  else if(i==pos)
 			    {
@@ -172,7 +178,6 @@ void dlt_pos()
 		 }
 		else
 		printf("The linked list is empty"); 
-
 	 }	
 void dlt_strt()
 	{
@@ -191,7 +196,7 @@ int main()
     {
 	int choice;
 	do{
-	    printf("\n1. Add at start\n2. Add at position\n3. Add at end\n4. Display\n5. Delete from end\n6. Delete from start\n7. Delete at position \n8. Exit");
+	    printf("\n1. Add at start\n2. Add at position\n3. Add at end\n4. Display\n5. Delete from end\n6. Delete from start\n7. Delete at position \n8. Search for an element\n9. Exit");
 	    printf("\nEnter your choice:\n");
 	    scanf("%d",&choice);
 	    switch(choice)
@@ -209,12 +214,13 @@ int main()
 	     	    case 6: dlt_strt();
 			    break;
 		    case 7: dlt_pos();
-			   break;		 
-		    case 8 : printf("Exiting");
-			   break;
+			   break;	
+		    case 8: search();
+		            break;	   	 
+		    case 9 : printf("Exiting\n");
+		            break;
 		    default : printf("Invalid choice. If you want to exit please enter 8 as choice!!!");
-
 		}
-	}while(choice!=8);
+	}while(choice!=9);
 	return 0;
     }
