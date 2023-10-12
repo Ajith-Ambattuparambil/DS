@@ -6,105 +6,99 @@ struct node{
   struct node *next;
 };
 struct node *head=NULL, *end=NULL;
-static int size = 0;
-
+static int size=0;
 void insert_head(int data){
   struct node *node;
   node = (struct node*)malloc(sizeof(struct node));
-  node->data = data;
-  node->next = head;
-  node->prev = NULL;
-  if(head != NULL)
+  node->data=data;
+  node->next=head;
+  node->prev=NULL;
+  if(head!=NULL)
   {
-    head->prev = node;
+    head->prev=node;
     head=node;
   }
   else
   {
-    head = node;
-    end = node;
+    head=node;
+    end=node;
   }
   size++;
 }
-
 void insert_end(int data){
   struct node *node;
   node = (struct node*)malloc(sizeof(struct node));
   node->data = data;
   node->next = NULL;
   node->prev = NULL;
-  if(end == NULL)
+  if(end==NULL)
   {
-    head = node;
-    end = node;
+    head=node;
+    end=node;
   }
   else{
-    node->prev = end;
-    end->next = node;
+    node->prev=end;
+    end->next=node;
     end = node;
   }
   size++;
 }
-
 void insert(int data, int pos)
 {
   int count=1;
   struct node *node, *temp;
-  temp = head;
-  node = (struct node*)malloc(sizeof(struct node));
-  node->data = data;
+  temp=head;
+  node=(struct node*)malloc(sizeof(struct node));
+  node->data=data;
   do{
-    if(count == pos){
-      node->next = temp->next;
-      (temp->next)->prev = node;
-      node->prev = temp;
-      temp->next = node;
+    if(count==pos){
+      node->next=temp->next;
+      (temp->next)->prev=node;
+      node->prev=temp;
+      temp->next=node;
       size++;
       break;
     }
     else{
       count++;
-      temp = temp->next;
+      temp=temp->next;
     }
   }while(count<=pos);
 }
-
 void delete_head()
 {
   struct node *temp;
-  if(head != NULL)
+  if(head!=NULL)
   {
       printf("\n\t\tNode deleted: %d", head->data);
       temp = head;
       head = head->next;
       if(head!=NULL)
-        head->prev = NULL;
+        head->prev=NULL;
       else
-        end = NULL;
+        end=NULL;
       free(temp);
       size--;
   }
   else
     printf("\n\t\tThis Linked List is Empty!!");
 }
-
 void delete_end(){
-  if(head == NULL)
+  if(head==NULL)
     printf("\t\tThis Linked list is empty!!");
   else{
     printf("\n\t\tNode deleted: %d", end->data);
     struct node *temp,*nxt_temp;
     temp = end;
     end = end->prev;
-    if(end == NULL)
-      head = NULL;
+    if(end==NULL)
+      head=NULL;
     else
-      end->next = NULL;
+      end->next=NULL;
     free(temp);
     size--;
   }
 }
-
 void delete_pos(int pos)
 {
   int count = 1;
@@ -129,7 +123,6 @@ void delete_pos(int pos)
   }
   while(count<=pos);
 }
-
 void display_forward(){
   if(head == NULL)
     printf("\n\t\tThis Linked List is Empty!!");
@@ -147,8 +140,8 @@ void display_reverse(){
   if(end == NULL)
     printf("\n\t\tThis Linked List is Empty!!");
   else{
-    struct node *link = end;
-    while(link->prev != NULL)
+    struct node *link=end;
+    while(link->prev!= NULL)
     {
       printf("%d ", link->data);
       link = link->prev;
@@ -156,7 +149,6 @@ void display_reverse(){
     printf("%d\n", link->data);
   }
 }
-
 void search(){
   int count = 1;
   if(head == NULL)
@@ -179,7 +171,6 @@ void search(){
     printf("\n\t\tThe number is not found in the linked list!!");
   }
 }
-
 int main(){
   int ch, data, pos;
   do{
@@ -187,19 +178,19 @@ int main(){
     scanf("%d", &ch);
     switch (ch) {
       case 1:
-        printf("Enter the data you need to store: ");
+        printf("Enter the value: ");
         scanf("%d", &data);
         insert_head(data);
         break;
       case 2:
-        printf("Enter the data you need to store: ");
+        printf("Enter the value: ");
         scanf("%d", &data);
         insert_end(data);
         break;
       case 3:
-        printf("Enter the data you need to store: ");
+        printf("Enter the value: ");
         scanf("%d", &data);
-        printf("Enter the position where you need to store(Head=0:End=%d): ", size);
+        printf("Enter the position: ");
         scanf("%d", &pos);
         if(pos<0 || pos>size)
           printf("\n\t\tInvalid Position!!");
@@ -218,7 +209,7 @@ int main(){
         delete_end();
         break;
       case 6:
-        printf("Enter the position where you need to delete from(Head=0:End=%d): ", size-1);
+        printf("Enter the position where you need to delete: ");
         scanf("%d", &pos);
         if(pos<0 || pos>size)
           printf("\n\t\tInvalid Position!!");
@@ -239,7 +230,7 @@ int main(){
         search();
         break;
       case 10:
-        printf("\n\t\tYou have exited the program sucessfully!!");
+        printf("\n\t\tYou have exited the program sucessfully!!\n");
         break;
       default:
         printf("\n\t\tWrong Input!!");
