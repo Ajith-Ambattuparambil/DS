@@ -17,7 +17,7 @@ void ins_end()
 	 temp=(struct node*)malloc(sizeof(dummy));
 	  temp->data=data;
 	  temp->next=NULL;
-	  //if the linkedlist is empty .then temp has the adress of the first element so we asign the adress to head
+	  //if the linkedlist is empty, then temp has the address of the first element so we asign the address to head
 	if(head==NULL)
 	  {
 	    head=temp;
@@ -25,12 +25,12 @@ void ins_end()
 	else
 	  {
 	    ptr=head;
-	    //to find the last element in linked list we go trough the linked list until we find the pointer with null which indicate the last element
+	    //To find the last element in linked list we go through the linked list until we find the pointer with null which indicate the last element
 	    while(ptr->next!=NULL)
 		{
 		    ptr=ptr->next;
 		}
-	    //then we asign the adress of new now(temp) to the pointer of last not which means the new node is connected to last node
+	    //Then we assign the address of new now(temp) to the pointer of last not which means the new node is connected to last node
 	    ptr->next=temp;
 	  }
      }
@@ -53,8 +53,6 @@ void display()
 	   {
 	     printf("\nLinked list is empty\n");
 	   }
-
-
      }
 void dlt_end()
     {
@@ -104,6 +102,7 @@ int main()
 		    default : printf("Invalid choice. If you want to exit please enter 8 as choice!!!");
 
 		}
-	}while(choice!=4);
+	}
+	while(choice!=4);
 	return 0;
 }

@@ -1,14 +1,11 @@
 #include<stdio.h>
 #include<stdlib.h>
-
 //Declaring the node
-
 struct node
    {
      int number;
      struct node *next;
    };
-   
 int search_value(struct node *list1,int num);
 
 void append_node(struct node *list1, int num);
@@ -24,7 +21,7 @@ int main()
       list1=(struct node*) malloc(sizeof(struct node));
       list1->number=0;
       list1->next=NULL;
-      
+   
       while(input!=0)
          {
             printf("\n--Menu Selection --\n");
@@ -36,9 +33,9 @@ int main()
             scanf("%d",&input);
             
             switch(input)
-              {
+                {
                 case 0:
-                default: printf("Bye\n");
+                printf("Bye\n");
                 input=0;
                 break;
                 
@@ -70,6 +67,8 @@ int main()
                 printf("Your choice is 'Display'\n");
                 display_list(list1);
                 break;
+                
+               default: printf("Not a valid option selected");
              }  /*Switch closed*/
           } /*while closed*/       
       free(list1);
@@ -81,10 +80,10 @@ void display_list(struct node *list1)
       list1=list1->next;
       while(list1->next!=NULL)
          {
-             printf("%d",list1->number);
+             printf("%d ",list1->number);
              list1=list1->next;
          }
-      printf("%d",list1->number);
+      printf("%d ",list1->number);
    }
    
 void append_node(struct node *list1,int num)
