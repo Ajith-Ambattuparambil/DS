@@ -11,11 +11,11 @@ int main()
       {
         printf("\nSelect the search operation you want to perform:\n1. Linear search\n2. Binary search\n3. Exit\n");
         scanf("%d",&option);
-        printf("\nWhich element do you want to search?:\n");
-        scanf("%d",&item);
         switch(option)
            {
               case 1:
+              printf("\nWhich element do you want to search?:\n");
+              scanf("%d",&item);
               for(i=0;i<n;i++)
                  {
                      if(a[i]==item)
@@ -28,7 +28,9 @@ int main()
              if(k==0)
              printf("Item not found!!!\n");
              break;
-             case 2:   
+             case 2:
+             printf("\nWhich element do you want to search?:\n");
+             scanf("%d",&item);   
              h=n-1;
              m=(l+h)/2;
              while(l<=h)
