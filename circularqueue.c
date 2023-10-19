@@ -36,11 +36,7 @@ int main()
 void insert()
    {
      int temprear=rear;
-     printf("\nrear=%d",rear);
      rear=(rear+1)%(max);
-     printf("\nrear=%d",rear);
-     printf("\nmax= %d",max);
-     printf("\nfront=%d",front);
     if(front==-1)
         {
            front=0;
@@ -73,9 +69,8 @@ void deletion()
         rear=-1;
         }
         else
-            {  
-             front=(front+1)%max;
-                printf("\nDeleted the element %d",queue[front]);
+            {         printf("\nDeleted the element %d",queue[front]);
+             front=(front+1)%max;     
             }
    }         
 void search()
@@ -100,7 +95,6 @@ void search()
 void display()
     {
         int i=front;
-        printf("front=%d \n rear=%d",front,rear);
         if(front==-1)
             {
                 printf("\nQueue is empty\n");
