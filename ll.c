@@ -158,7 +158,7 @@ void dlt_pos()
 				i++;
 				pre=dlt;
 				dlt=dlt->next;
-				printf("\n %d   %d",1,dlt->data);
+				printf("\nDeleting element from position %d and value is %d",i,dlt->data);
 			  }
 			  if(i==pos && dlt==head)
 			    {
