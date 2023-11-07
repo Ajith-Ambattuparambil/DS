@@ -44,7 +44,7 @@ struct node *minValueNode(struct node *node)
     current = current->left;
   return current;
 }
-//Deleting a node
+// Deleting a node
 struct node *deleteNode(struct node *root, int key) {
   // Return if the tree is empty
   if (root == NULL) return root;
@@ -77,6 +77,7 @@ struct node *deleteNode(struct node *root, int key) {
 int main() {
   struct node *root = NULL;
   int i,n,m,d,choice;
+
   do
   {
   printf("\nEnter your choice:\n1. Insertion\n2. Deletion\n3. Search\n4. Exit\n");
@@ -84,31 +85,37 @@ int main() {
   switch(choice)
   {
   case 1:
-  printf("\nEnter the number of elements to be inserted in BST:\n");
-  scanf("%d",&n);
-  printf("Enter the %d elements:\n",n);
-  for(i=0;i<n;i++)
-  {
+  printf("Enter the element to be inserted:\n");
   scanf("%d",&m);
-  root = insert(root, m);
-  }
+  root = insert(root,m);
   printf("\nInorder traversal:\n");
   inorder(root);
   break;
   case 2:
   printf("\nEnter the value to be deleted:\n");
-  scanf("%d",&d);
-  printf("\nAfter deleting %d\n",d);
-  root = deleteNode(root, d);
-  printf("Inorder traversal:\n");
-  inorder(root);
+  scanf("%d",&item);
+          search(root);
+          if(flag==0)
+             printf("element not found");
+          else
+          	{
+          	 printf("\nAfter deleting %d\n",item);
+                 root = deleteNode(root,item);
+                 printf("Inorder traversal:\n");
+                 inorder(root);
+          	}
+  
+  flag=0;
   break;
-  case 3: printf("\nEnter the value to be searched \n");
+  case 3: printf("\n enter the value to be searched \n");
           scanf("%d",&item);
           search(root);
           if(flag==0)
-             printf("Element not found");
+             printf("element not found");
+          else
+              printf("%d found in binary search tree",item);
           flag=0;
+  
   case 4:
   printf("\nExiting\n");
   break;
@@ -125,10 +132,9 @@ void search(struct node *root)
          // Traverse root
          if(item==root->key)
          {
-         printf("%d found in binary search tree", root->key);
          flag=1;
          }
          // Traverse right
          search(root->right);
-               } 
+               }
     }
