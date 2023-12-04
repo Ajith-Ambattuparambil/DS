@@ -25,7 +25,7 @@ int main()
       for(i=0;i<10;i++)
           a_differ_b[i]=a[i]-b[i];
           display(a_differ_b);
-      printf("\n\t\t The difference of A and B is:\n");
+      printf("\n\t\t The difference of B and A is:\n");
       for(i=0;i<10;i++)
           b_differ_a[i]=b[i]-a[i];
           display(b_differ_a);        
