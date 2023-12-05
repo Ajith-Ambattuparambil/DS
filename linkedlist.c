@@ -126,7 +126,7 @@ void dlt_end()
 			{
 			   while(dlt->next!=NULL)
 			       {
-				 pre=dlt;
+				    pre=dlt;
 			     	dlt=dlt->next;
 					i=i+1;
 			       }

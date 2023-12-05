@@ -44,10 +44,7 @@ void create()
 		scanf("%d",&setB[i]);
 	printf("\nSet A:{");
 	for(i=1;i<=m;i++)
-	
 		printf("%d",setA[i]);
-		
-		
 	printf("}\n");
 	printf("Set B:{");
 	for(i=1;i<=n;i++)
