@@ -17,8 +17,6 @@ int uni(int i,int j)
 	} 
 	return 0; 
 } 
-	 
-	 
 int main(){  
 	printf("Total no of v :: ");
 	scanf("%d",&v);

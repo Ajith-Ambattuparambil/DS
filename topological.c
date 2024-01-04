@@ -7,9 +7,7 @@ f=0;
   for(c=1;c<=n;c++)
   {
    if(adj[c][v]==0 && visited[v]!=-1)
-   {
     f++;
-   }
   }
   if(f==temp)
    return 1;
@@ -25,9 +23,7 @@ int main()
  for(i=1;i<=n;i++)
  {
   for(j=1;j<=n;j++)
-  {
     scanf("%d",&adj[i][j]);
-  }
  }
  for(i=1;i<=n;i++)
    visited[i]=i;

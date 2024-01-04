@@ -16,13 +16,13 @@ int pop()
 }
 int main()
 {
-	printf("enter the number of vertices\n");
+	printf("Enter the number of vertices\n");
 	scanf("%d",&n);
 	for(i=1;i<=n;++i)
 	{
 		visited[i]=0;
 	}
-	printf("enter the adjacency matrix:\n");
+	printf("Enter the adjacency matrix:\n");
 	for(i=1;i<=n;++i)
 	{
 		for(j=1;j<=n;++j)
